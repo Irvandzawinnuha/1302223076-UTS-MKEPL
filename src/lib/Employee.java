@@ -19,7 +19,7 @@ public class Employee {
 	private int monthWorkingInYear;
 	
 	private boolean isForeigner;
-	private boolean gender; //true = Laki-laki, false = Perempuan
+	private boolean gender;
 	
 	private int monthlySalary;
 	private int otherMonthlyIncome;
@@ -52,7 +52,9 @@ public class Employee {
 	 * Jika pegawai adalah warga negara asing gaji bulanan diperbesar sebanyak 50%
 	 */
 	
-	public void setMonthlySalary(int grade) {	
+	 /*terdapat Duplicate Code pada setMonthlySalary */
+	public void setMonthlySalary(int grade) {
+		/*Bagian ini diulang 3x untuk grade 1, grade 2, dan grade 3*/
 		if (grade == 1) {
 			monthlySalary = 3000000;
 			if (isForeigner) {
@@ -71,11 +73,11 @@ public class Employee {
 		}
 	}
 	
-	public void setAnnualDeductible(int deductible) {	
+	public void setAnnualDeductible(int deductible) {
 		this.annualDeductible = deductible;
 	}
 	
-	public void setAdditionalIncome(int income) {	
+	public void setAdditionalIncome(int income) {
 		this.otherMonthlyIncome = income;
 	}
 	
@@ -90,7 +92,7 @@ public class Employee {
 	}
 	
 	public int getAnnualIncomeTax() {
-		
+		// terdapat bad smell : Long Method pada getAnnualIncomeTax()
 		//Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
 		LocalDate date = LocalDate.now();
 		
